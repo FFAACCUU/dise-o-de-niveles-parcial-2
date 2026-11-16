@@ -2,9 +2,11 @@ class_name Player extends CharacterBody2D
 
 @onready var state_machine = $StateMachine
 
-var look_vector : Vector2
+var look_vector : Vector2 = Vector2(0.0, 1.0)
 var movement_vector : Vector2
 var movement_speed : float = 7680.0
+
+@onready var sprite = $Sprite2D
 
 func _ready() -> void:
 	initialize_state_machine()
@@ -15,7 +17,7 @@ func initialize_state_machine() -> void:
 	# Todos los estados del jugador tiene una clase especifica
 	var states : Array[State] = [
 		PlayerStateIdle.new(self), PlayerStateRunning.new(self), PlayerStateAttack.new(self),
-		PlayerStateCharging.new(self), PlayerStateDashing.new(self)
+		PlayerStateCharging.new(self), PlayerStateDashing.new(self), PlayerStateKnockback.new(self)
 		]
 	state_machine.start_machine(states)
 
