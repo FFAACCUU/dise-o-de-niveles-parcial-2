@@ -13,8 +13,10 @@ var movement_speed : float = 7680.0
 
 var transition_direction : Vector2
 
-@onready var sword_hurt_box = $HurtBox
-@onready var sword_collision = $HurtBox/CollisionShape2D
+@onready var sword_hurt_box = $HurtBoxSword
+@onready var sword_collision = $HurtBoxSword/CollisionShape2D
+@onready var hitbox_collision = $HitBox/CollisionShape2D
+@onready var dash_collision = $HurtboxDash/CollisionShape2D
 
 func _init() -> void:
 	current_health = max_health

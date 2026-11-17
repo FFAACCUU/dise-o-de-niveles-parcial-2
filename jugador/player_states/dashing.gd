@@ -19,7 +19,13 @@ func physics_update(delta : float) -> void:
 			state_machine.transition_states("Knockback")
 		
 
+func enter() -> void:
+	player.dash_collision.set_deferred("disabled", false)
+	player.hitbox_collision.set_deferred("disabled", true)
+
 func exit() -> void:
+	player.dash_collision.set_deferred("disabled", true)
+	player.hitbox_collision.set_deferred("disabled", false)
 	player.velocity = Vector2.ZERO
 
 func update(delta : float) -> void:

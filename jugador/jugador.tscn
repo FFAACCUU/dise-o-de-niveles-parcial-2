@@ -8,6 +8,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_im34r"]
 radius = 16.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a407c"]
+size = Vector2(32, 32)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2md2q"]
 size = Vector2(32, 32)
 
@@ -35,13 +38,29 @@ offset_bottom = 23.0
 position = Vector2(0, -16)
 texture = ExtResource("3_im34r")
 
-[node name="HurtBox" type="Area2D" parent="." unique_id=2044993008]
+[node name="HurtboxDash" type="Area2D" parent="." unique_id=1476334554]
 collision_layer = 4
 collision_mask = 0
 monitoring = false
 script = ExtResource("4_vu2ya")
+damage = 5
+knockback_force = 10.0
+metadata/_custom_type_script = "uid://bv085os3f8uc1"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1525678998]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxDash" unique_id=2092324253]
+shape = SubResource("RectangleShape2D_a407c")
+disabled = true
+
+[node name="HurtBoxSword" type="Area2D" parent="." unique_id=1838112508]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+script = ExtResource("4_vu2ya")
+damage = 2
+knockback_force = 5.0
+metadata/_custom_type_script = "uid://bv085os3f8uc1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxSword" unique_id=1525678998]
 shape = SubResource("RectangleShape2D_2md2q")
 disabled = true
 
