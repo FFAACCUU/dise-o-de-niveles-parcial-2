@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cjci8n87bsgkm"]
 
-[ext_resource type="Script" uid="uid://cqjagi22mqp6f" path="res://niveles/transition_area.gd" id="1_ff0el"]
+[ext_resource type="Script" uid="uid://cqjagi22mqp6f" path="res://niveles/assets/transition_area.gd" id="1_ff0el"]
 
 [node name="TransitionArea" type="Area2D" unique_id=1854587473]
 collision_layer = 0

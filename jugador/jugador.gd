@@ -22,7 +22,14 @@ func _init() -> void:
 	current_health = max_health
 
 func _ready() -> void:
+	SignalBus.connect("cutscene_transition", on_cut)
 	initialize_state_machine()
+
+func on_cut(time : float) -> void:
+	var cut_tween := create_tween()
+	cut_tween.tween_interval(time * 0.5)
+	await cut_tween.finished
+	global_position = Vector2(-1504.0, 352.0)
 
 # Inicializa la máquina de estados, agregando todos los estados posibles.
 func initialize_state_machine() -> void:

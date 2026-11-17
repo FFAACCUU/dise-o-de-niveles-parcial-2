@@ -44,6 +44,10 @@ func enter() -> void:
 	#await combo_timer.finished
 	#combo_counter = 0
 
+func exit() -> void:
+	if attack_timer:
+		attack_timer.kill()
+
 #func attack_anim_jab() -> void:
 #	print("combo 1")
 #	combo_counter += 1

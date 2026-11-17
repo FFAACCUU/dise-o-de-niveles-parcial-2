@@ -3,6 +3,7 @@ extends Camera2D
 var transition_tween : Tween
 
 func _ready() -> void:
+	SignalBus.connect("cutscene_transition", on_cut)
 	SignalBus.connect("moved_room", room_transition)
 
 func room_transition(n_left : int, n_top : int, n_right : int, n_bottom : int, direction : Vector2) -> void:
@@ -19,3 +20,12 @@ func room_transition(n_left : int, n_top : int, n_right : int, n_bottom : int, d
 	limit_top = n_top
 	limit_right = n_right
 	limit_bottom = n_bottom
+
+func on_cut(time : float) -> void:
+	var cut_tween := create_tween()
+	cut_tween.tween_interval(time * 0.5)
+	await cut_tween.finished
+	limit_left = -2944
+	limit_top = 0
+	limit_right = -896
+	limit_bottom = 704

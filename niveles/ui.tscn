@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://c8aew1glbduxu"]
+
+[ext_resource type="Script" uid="uid://dfm4cqc5yahrm" path="res://ui.gd" id="1_ty54s"]
+
+[node name="UI" type="CanvasLayer" unique_id=1062723628]
+script = ExtResource("1_ty54s")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=650509926]
+offset_right = 832.0
+offset_bottom = 64.0
+color = Color(0, 0, 0, 1)
+
+[node name="CutsceneTransition" type="ColorRect" parent="." unique_id=19743634]
+offset_right = 832.0
+offset_bottom = 704.0
+color = Color(0.133, 0.11, 0.102, 0)

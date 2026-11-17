@@ -8,8 +8,17 @@ var states : Dictionary = {}
 
 var last_state : State
 
+var wont_transition : bool = false
+
 func _ready() -> void:
+	SignalBus.connect("toggle_player_transitions", toggle_player_transition)
 	SignalBus.connect("room_transition", transition_room)
+
+func toggle_player_transition(toggle : bool) -> void:
+	if !toggle:
+		wont_transition = true
+	else:
+		wont_transition = false
 
 func transition_room(is_active : bool, trans_dir : Vector2) -> void:
 	if is_active:
@@ -35,6 +44,9 @@ func _physics_process(delta : float) -> void:
 	current_state.physics_update(delta)
 
 func transition_states(new_state_name : String) -> void:
+	if wont_transition:
+		return
+	
 	var new_state : State = states.get(new_state_name)
 	var current_state_name : String = current_state.get_state_name()
 	

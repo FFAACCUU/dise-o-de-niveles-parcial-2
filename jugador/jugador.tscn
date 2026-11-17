@@ -38,7 +38,7 @@ offset_bottom = 23.0
 position = Vector2(0, -16)
 texture = ExtResource("3_im34r")
 
-[node name="HurtboxDash" type="Area2D" parent="." unique_id=1476334554]
+[node name="HurtboxDash" type="Area2D" parent="." unique_id=1476334554 groups=["PlayerDash"]]
 collision_layer = 4
 collision_mask = 0
 monitoring = false
