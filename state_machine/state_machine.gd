@@ -3,7 +3,21 @@ class_name StateMachine extends Node
 var current_state : State
 var states : Dictionary = {}
 
+@export var player : Player
 @onready var label = $"../Label"
+
+var last_state : State
+
+func _ready() -> void:
+	SignalBus.connect("room_transition", transition_room)
+
+func transition_room(is_active : bool, trans_dir : Vector2) -> void:
+	if is_active:
+		player.transition_direction = trans_dir
+		last_state = current_state
+		transition_states("Room Transition")
+	else:
+		transition_states(last_state.get_state_name())
 
 func start_machine(init_states : Array[State]) -> void:
 	for state in init_states:

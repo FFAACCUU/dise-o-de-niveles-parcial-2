@@ -9,9 +9,9 @@ var charge_interval : float = 1.0
 var charge : float = 0.0
 
 func physics_update(delta : float) -> void:
-	player.movement_vector = Input.get_vector("MoveLeft", "MoveRight", "MoveUp", "MoveDown").normalized()
+	player.movement_vector = Vector2(Input.get_axis("MoveLeft", "MoveRight"), Input.get_axis("MoveUp", "MoveDown"))
 	
-	player.velocity = player.movement_vector * (player.movement_speed * 0.5) * delta
+	player.velocity = player.movement_vector.normalized() * (player.movement_speed * 0.5) * delta
 
 func exit() -> void:
 	charge = 0.0

@@ -6,7 +6,7 @@ func get_state_name() -> String:
 	return state_name
 
 func physics_update(delta : float) -> void:
-	player.velocity = player.look_vector * (player.movement_speed * 4) * delta
+	player.velocity = player.look_vector.normalized() * (player.movement_speed * 4) * delta
 	
 	for i in player.get_slide_collision_count():
 		var collision := player.get_slide_collision(0)

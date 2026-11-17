@@ -10,10 +10,13 @@ func exit() -> void:
 
 func physics_update(delta : float) -> void:
 	if player.movement_vector: player.look_vector = player.movement_vector
+	if player.look_vector.y != 0.0:
+		player.look_vector = Vector2(0.0, player.look_vector.y)
+	player.attack()
 	
-	player.movement_vector = Input.get_vector("MoveLeft", "MoveRight", "MoveUp", "MoveDown").normalized()
+	player.movement_vector = Vector2(Input.get_axis("MoveLeft", "MoveRight"), Input.get_axis("MoveUp", "MoveDown"))
 	
-	player.velocity = player.movement_vector * player.movement_speed * delta
+	player.velocity = player.movement_vector.normalized() * player.movement_speed * delta
 	
 	if player.movement_vector == Vector2.ZERO:
 		state_machine.transition_states("Idle")

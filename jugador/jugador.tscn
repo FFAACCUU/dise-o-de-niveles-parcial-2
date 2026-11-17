@@ -15,8 +15,9 @@ script = ExtResource("1_y3xgi")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1111537381]
 shape = SubResource("CircleShape2D_im34r")
 
-[node name="StateMachine" type="Node" parent="." unique_id=1980770399]
+[node name="StateMachine" type="Node" parent="." unique_id=1980770399 node_paths=PackedStringArray("player")]
 script = ExtResource("2_5vouv")
+player = NodePath("..")
 
 [node name="Label" type="Label" parent="." unique_id=942557436]
 offset_right = 40.0

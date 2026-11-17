@@ -8,6 +8,8 @@ var movement_speed : float = 7680.0
 
 @onready var sprite = $Sprite2D
 
+var transition_direction : Vector2
+
 func _ready() -> void:
 	initialize_state_machine()
 
@@ -17,15 +19,16 @@ func initialize_state_machine() -> void:
 	# Todos los estados del jugador tiene una clase especifica
 	var states : Array[State] = [
 		PlayerStateIdle.new(self), PlayerStateRunning.new(self), PlayerStateAttack.new(self),
-		PlayerStateCharging.new(self), PlayerStateDashing.new(self), PlayerStateKnockback.new(self)
+		PlayerStateCharging.new(self), PlayerStateDashing.new(self), PlayerStateKnockback.new(self),
+		PlayerStateRoomtrans.new(self)
 		]
 	state_machine.start_machine(states)
 
 func _physics_process(delta) -> void:
 	move_and_slide()
 
-func _process(delta) -> void:
+func attack():
 	queue_redraw()
 
 func _draw() -> void:
-	draw_line(Vector2.ZERO, look_vector * 32, Color.RED, 5.0, true)
+	draw_line(Vector2.ZERO, look_vector.normalized() * 32, Color.RED, 5.0, true)
