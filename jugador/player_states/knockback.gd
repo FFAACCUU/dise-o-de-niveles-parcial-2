@@ -14,7 +14,7 @@ func enter() -> void:
 	hop_tween = player.create_tween()
 	
 	hop_tween.tween_property(player.sprite, "position", Vector2(0.0, -32.0), 0.1)
-	hop_tween.tween_property(player.sprite, "position", Vector2(0.0, -16.0), 0.1)
+	hop_tween.tween_property(player.sprite, "position", Vector2(0.0, 0.0), 0.1)
 	await hop_tween.finished
 	state_machine.transition_states("Idle")
 

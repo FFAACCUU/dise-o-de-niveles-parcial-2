@@ -13,6 +13,12 @@ func physics_update(delta : float) -> void:
 	
 	player.velocity = player.movement_vector.normalized() * (player.movement_speed * 0.5) * delta
 
+func enter() -> void:
+	player.animation_tree["parameters/conditions/is_idle"] = false
+	player.animation_tree["parameters/conditions/is_moving"] = false
+	player.animation_tree["parameters/conditions/is_attacking"] = false
+	player.animation_tree["parameters/conditions/is_charging"] = true
+
 func exit() -> void:
 	charge = 0.0
 

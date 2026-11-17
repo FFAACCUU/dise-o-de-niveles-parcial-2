@@ -20,6 +20,11 @@ func physics_update(delta : float) -> void:
 		
 
 func enter() -> void:
+	player.animation_tree["parameters/conditions/is_idle"] = false
+	player.animation_tree["parameters/conditions/is_moving"] = false
+	player.animation_tree["parameters/conditions/is_attacking"] = false
+	player.animation_tree["parameters/conditions/is_charging"] = true
+	
 	player.dash_collision.set_deferred("disabled", false)
 	player.hitbox_collision.set_deferred("disabled", true)
 

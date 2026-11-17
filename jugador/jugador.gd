@@ -18,6 +18,8 @@ var transition_direction : Vector2
 @onready var hitbox_collision = $HitBox/CollisionShape2D
 @onready var dash_collision = $HurtboxDash/CollisionShape2D
 
+@onready var animation_tree = $AnimationTree
+
 func _init() -> void:
 	current_health = max_health
 
@@ -44,12 +46,12 @@ func initialize_state_machine() -> void:
 
 func _physics_process(delta) -> void:
 	move_and_slide()
+	
+	animation_tree["parameters/Idle/blend_position"] = look_vector
+	animation_tree["parameters/Move/blend_position"] = look_vector
+	animation_tree["parameters/Attack/blend_position"] = look_vector
+	animation_tree["parameters/Charge/blend_position"] = look_vector
 
-func attack():
-	queue_redraw()
-
-func _draw() -> void:
-	draw_line(Vector2.ZERO, look_vector.normalized() * 32, Color.RED, 5.0, true)
 
 func _on_hit_box_area_entered(area):
 	if area.is_in_group("Enemy"):

@@ -11,6 +11,11 @@ func get_state_name() -> String:
 var attack_timer : Tween
 
 func enter() -> void:
+	player.animation_tree["parameters/conditions/is_idle"] = false
+	player.animation_tree["parameters/conditions/is_moving"] = false
+	player.animation_tree["parameters/conditions/is_attacking"] = true
+	player.animation_tree["parameters/conditions/is_charging"] = false
+	
 	#if combo_timer:
 	#	combo_timer.kill()
 	#combo_timer = player.create_tween()
@@ -30,7 +35,7 @@ func enter() -> void:
 	
 	player.sword_collision.disabled = false
 	
-	attack_timer.tween_interval(0.2)
+	attack_timer.tween_interval(0.4)
 	
 	await attack_timer.finished
 	player.sword_collision.disabled = true

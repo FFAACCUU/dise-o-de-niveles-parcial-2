@@ -5,6 +5,12 @@ static var state_name := "Running"
 func get_state_name() -> String:
 	return state_name
 
+func enter() -> void:
+	player.animation_tree["parameters/conditions/is_idle"] = false
+	player.animation_tree["parameters/conditions/is_moving"] = true
+	player.animation_tree["parameters/conditions/is_attacking"] = false
+	player.animation_tree["parameters/conditions/is_charging"] = false
+
 func exit() -> void:
 	player.movement_vector = Vector2.ZERO
 
@@ -12,7 +18,6 @@ func physics_update(delta : float) -> void:
 	if player.movement_vector: player.look_vector = player.movement_vector
 	if player.look_vector.x != 0.0:
 		player.look_vector = Vector2(player.look_vector.x, 0.0)
-	player.attack()
 	
 	player.movement_vector = Vector2(Input.get_axis("MoveLeft", "MoveRight"), Input.get_axis("MoveUp", "MoveDown"))
 	
