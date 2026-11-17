@@ -12,4 +12,4 @@ func enter() -> void:
 		transition_tween.kill()
 	transition_tween = player.create_tween()
 	
-	transition_tween.tween_property(player, "global_position", player.global_position + player.transition_direction * 192.0, 0.6)
+	transition_tween.tween_property(player, "global_position", player.global_position + player.transition_direction * 128.0, 0.6)

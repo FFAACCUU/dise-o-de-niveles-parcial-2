@@ -3,9 +3,17 @@
 [ext_resource type="Script" uid="uid://dawey6dmug84m" path="res://jugador/jugador.gd" id="1_y3xgi"]
 [ext_resource type="Script" uid="uid://cv0r1o3cr4n5h" path="res://state_machine/state_machine.gd" id="2_5vouv"]
 [ext_resource type="Texture2D" uid="uid://bapf5lpqj5hwm" path="res://jugador/player_placeholder.png" id="3_im34r"]
+[ext_resource type="Script" uid="uid://bv085os3f8uc1" path="res://hurt_box.gd" id="4_vu2ya"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_im34r"]
 radius = 16.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2md2q"]
+size = Vector2(32, 32)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x0wpc"]
+radius = 8.0
+height = 32.0
 
 [node name="Jugador" type="CharacterBody2D" unique_id=80591387]
 collision_mask = 2
@@ -26,3 +34,24 @@ offset_bottom = 23.0
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=839261861]
 position = Vector2(0, -16)
 texture = ExtResource("3_im34r")
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=2044993008]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+script = ExtResource("4_vu2ya")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1525678998]
+shape = SubResource("RectangleShape2D_2md2q")
+disabled = true
+
+[node name="HitBox" type="Area2D" parent="." unique_id=218100574]
+collision_layer = 0
+collision_mask = 12
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=2028541930]
+position = Vector2(0, -8)
+shape = SubResource("CapsuleShape2D_x0wpc")
+
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

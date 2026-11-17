@@ -10,8 +10,8 @@ func exit() -> void:
 
 func physics_update(delta : float) -> void:
 	if player.movement_vector: player.look_vector = player.movement_vector
-	if player.look_vector.y != 0.0:
-		player.look_vector = Vector2(0.0, player.look_vector.y)
+	if player.look_vector.x != 0.0:
+		player.look_vector = Vector2(player.look_vector.x, 0.0)
 	player.attack()
 	
 	player.movement_vector = Vector2(Input.get_axis("MoveLeft", "MoveRight"), Input.get_axis("MoveUp", "MoveDown"))

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dtsb3ua8bednb"]
+
+[ext_resource type="Script" uid="uid://0wome1ord6kf" path="res://hit_box.gd" id="1_hmo53"]
+
+[node name="HitBox" type="Area2D" unique_id=1278415716]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_hmo53")

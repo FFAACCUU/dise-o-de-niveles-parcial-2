@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://cpamfkexwi1tk" path="res://niveles/tilesets/tileset_test.png" id="1_5x1p2"]
 [ext_resource type="PackedScene" uid="uid://dplfh5th72ncp" path="res://jugador/jugador.tscn" id="1_rvp4g"]
 [ext_resource type="Script" uid="uid://c8xs00atbwqh2" path="res://niveles/camara/camera.gd" id="2_6xqx8"]
+[ext_resource type="Script" uid="uid://bsnm7bwchep1w" path="res://niveles/hit_box_test.gd" id="5_6xqx8"]
+[ext_resource type="Script" uid="uid://bv085os3f8uc1" path="res://hurt_box.gd" id="6_5bmee"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b5wbn"]
 texture = ExtResource("1_5x1p2")
@@ -41,16 +43,18 @@ physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_b5wbn")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x0wpc"]
-size = Vector2(64, 64)
+size = Vector2(64, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6xqx8"]
-size = Vector2(64, 64)
+size = Vector2(64, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2s6b6"]
 size = Vector2(32, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5bmee"]
 size = Vector2(32, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2md2q"]
 
 [node name="TestLevel" type="Node2D" unique_id=276372329]
 
@@ -59,7 +63,7 @@ tile_map_data = PackedByteArray("AAAAAAEAAAAIAAAAAAAAAAIAAAAEAAAAAAAAAAMAAAAEAAA
 tile_set = SubResource("TileSet_x0wpc")
 
 [node name="TransitionArea" parent="." unique_id=1854587473 instance=ExtResource("1_2s6b6")]
-position = Vector2(160, 672)
+position = Vector2(160, 688)
 top = 704
 right = 1664
 bottom = 1280
@@ -69,7 +73,7 @@ move_direction = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_x0wpc")
 
 [node name="TransitionArea3" parent="." unique_id=1331102804 instance=ExtResource("1_2s6b6")]
-position = Vector2(160, 736)
+position = Vector2(160, 720)
 right = 832
 bottom = 704
 move_direction = Vector2(0, -1)
@@ -78,7 +82,7 @@ move_direction = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_6xqx8")
 
 [node name="TransitionArea2" parent="." unique_id=1812098996 instance=ExtResource("1_2s6b6")]
-position = Vector2(1616, 1088)
+position = Vector2(1648, 1088)
 left = 1664
 top = 704
 right = 2496
@@ -89,7 +93,7 @@ move_direction = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_2s6b6")
 
 [node name="TransitionArea4" parent="." unique_id=1589679905 instance=ExtResource("1_2s6b6")]
-position = Vector2(1648, 1088)
+position = Vector2(1680, 1088)
 top = 704
 right = 1664
 bottom = 1280
@@ -116,8 +120,16 @@ offset_right = 832.0
 offset_bottom = 64.0
 color = Color(0, 0, 0, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="CanvasLayer" unique_id=1228097452]
-offset_top = 640.0
-offset_right = 832.0
-offset_bottom = 704.0
-color = Color(0, 0, 0, 1)
+[node name="Node2D" type="Node2D" parent="." unique_id=1751288587]
+script = ExtResource("5_6xqx8")
+
+[node name="Area2D" type="Area2D" parent="Node2D" unique_id=1663181668 groups=["Enemy"]]
+position = Vector2(288, 352)
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("6_5bmee")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Area2D" unique_id=1421741929]
+shape = SubResource("RectangleShape2D_2md2q")
+
+[connection signal="area_entered" from="Node2D/Area2D" to="Node2D" method="_on_area_2d_area_entered"]
