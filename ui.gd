@@ -2,6 +2,8 @@ extends CanvasLayer
 
 @onready var cutscene_transition = $CutsceneTransition
 
+@export var player_node : Player
+
 func _ready() -> void:
 	SignalBus.connect("cutscene_transition", on_cut)
 

@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bha4yfbvlso3w"]
+
+[ext_resource type="Texture2D" uid="uid://7xngee2h7s70" path="res://niveles/tilesets/decor.png" id="1_oyf1u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llwtf"]
+atlas = ExtResource("1_oyf1u")
+region = Rect2(67, 139, 58, 48)
+
+[node name="Stump" type="Node2D" unique_id=1773876415]
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=304703207]
+texture = SubResource("AtlasTexture_llwtf")
+offset = Vector2(0, -10)

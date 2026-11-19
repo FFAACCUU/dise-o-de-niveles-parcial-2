@@ -11,7 +11,7 @@ func room_transition(n_left : int, n_top : int, n_right : int, n_bottom : int, d
 		transition_tween.kill()
 	transition_tween = create_tween()
 	
-	transition_tween.tween_property(self, "offset", (Vector2(832.0 * direction.x, 640 * direction.y)), 0.8)
+	transition_tween.tween_property(self, "offset", (Vector2(832.0 * direction.x, 704.0 * direction.y)), 0.8)
 	await transition_tween.finished
 	offset = Vector2.ZERO
 	SignalBus.emit_signal("room_transition", false, Vector2.ZERO)

@@ -1,13 +1,21 @@
 extends Area2D
 
-@export var left : int
-@export var top : int
-@export var right : int
-@export var bottom : int
 @export var move_direction : Vector2
+
+@export var room : Room
+
+var left : float
+var top : float
+var right : float
+var bottom : float
 
 func _ready() -> void:
 	SignalBus.connect("room_transition", on_room_transition)
+	
+	left = room.global_position.x
+	top = room.global_position.y
+	right = room.bottom_right.global_position.x
+	bottom = room.bottom_right.global_position.y
 
 func _on_body_entered(_body):
 	SignalBus.emit_signal("room_transition", true, move_direction)

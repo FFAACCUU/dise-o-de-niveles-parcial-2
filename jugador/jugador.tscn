@@ -10,7 +10,7 @@ radius = 16.0
 
 [sub_resource type="Animation" id="Animation_mk724"]
 resource_name = "AttackDown"
-length = 0.39999999999999997
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -26,7 +26,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_vmphg"]
 resource_name = "AttackLeft"
-length = 0.39999999999999997
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -42,7 +42,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_5iu33"]
 resource_name = "AttackRight"
-length = 0.39999999999999997
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -58,7 +58,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_llqwg"]
 resource_name = "AttackUp"
-length = 0.39999999999999997
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true

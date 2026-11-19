@@ -5,9 +5,9 @@ class_name Player extends CharacterBody2D
 var max_health : int = 10
 var current_health : int
 
-var look_vector : Vector2 = Vector2(0.0, 1.0)
+var look_vector : Vector2 = Vector2(0.0, -1.0)
 var movement_vector : Vector2
-var movement_speed : float = 7680.0
+var movement_speed : float = 11520.0
 
 @onready var sprite = $Sprite2D
 

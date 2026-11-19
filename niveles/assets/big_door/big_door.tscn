@@ -2,17 +2,5 @@
 
 [ext_resource type="Script" uid="uid://cn10hoe702i8x" path="res://niveles/assets/big_door/big_door.gd" id="1_i1qkt"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x0wpc"]
-size = Vector2(128, 320)
-
-[node name="BigDoor" type="StaticBody2D" unique_id=595886524]
-collision_layer = 2
-collision_mask = 0
+[node name="BigDoor" type="Node2D" unique_id=1658955635]
 script = ExtResource("1_i1qkt")
-
-[node name="Polygon2D" type="Polygon2D" parent="." unique_id=572918705]
-offset = Vector2(0, -224)
-polygon = PackedVector2Array(-64, 64, 64, 64, 64, 384, -64, 384)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1139571550]
-shape = SubResource("RectangleShape2D_x0wpc")
