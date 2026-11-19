@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dbklylac45oyc"]
+
+[ext_resource type="Script" uid="uid://b74s5f1tyoel5" path="res://healthpickup.gd" id="1_p81bq"]
+[ext_resource type="Texture2D" uid="uid://byupdysf88yx3" path="res://niveles/tilesets/Interior_Props_01.png" id="2_swinm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dqc04"]
+radius = 24.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swinm"]
+atlas = ExtResource("2_swinm")
+region = Rect2(2324, 1163, 28, 41)
+
+[node name="Health" type="Area2D" unique_id=480466330 groups=["Enemy"]]
+collision_layer = 4
+script = ExtResource("1_p81bq")
+damage = -5
+metadata/_custom_type_script = "uid://bv085os3f8uc1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=643957822]
+shape = SubResource("CircleShape2D_dqc04")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=85312372]
+texture = SubResource("AtlasTexture_swinm")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

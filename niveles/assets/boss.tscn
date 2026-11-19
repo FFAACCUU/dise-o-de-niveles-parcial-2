@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://dxuf6fsdtgavp"]
+
+[ext_resource type="Texture2D" uid="uid://bmnyb6ih5u6t6" path="res://enemies/sprites/enemies-necromancer.png" id="1_007vn"]
+[ext_resource type="Script" uid="uid://ye6e7vwtsmop" path="res://niveles/assets/boss.gd" id="1_yfdx8"]
+[ext_resource type="Script" uid="uid://djhcsp47s261b" path="res://enemies/enemy_state_machine.gd" id="2_ufije"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_idrar"]
+radius = 48.0
+
+[sub_resource type="Animation" id="Animation_ufije"]
+resource_name = "Idle"
+length = 1.5999999999999999
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9, 10, 11, 12, 13]
+}
+
+[sub_resource type="Animation" id="Animation_mbldb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1bjxn"]
+_data = {
+&"Idle": SubResource("Animation_ufije"),
+&"RESET": SubResource("Animation_mbldb")
+}
+
+[node name="Boss" type="CharacterBody2D" unique_id=2052601260]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_yfdx8")
+is_boss_ally = null
+has_key = null
+mf_that_gets_deleted = null
+
+[node name="StateMachine" type="Node" parent="." unique_id=743110590 node_paths=PackedStringArray("player")]
+script = ExtResource("2_ufije")
+player = NodePath("..")
+metadata/_custom_type_script = "uid://cv0r1o3cr4n5h"
+
+[node name="HitBox" type="Area2D" parent="." unique_id=1242166187]
+collision_layer = 0
+collision_mask = 12
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=725902616]
+shape = SubResource("CircleShape2D_idrar")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=2140311171]
+position = Vector2(10, -26)
+scale = Vector2(2, 2)
+texture = ExtResource("1_007vn")
+hframes = 16
+vframes = 3
+frame = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=146596206]
+root_node = NodePath("../Sprite")
+libraries/ = SubResource("AnimationLibrary_1bjxn")
+autoplay = &"Idle"
+
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

@@ -6,6 +6,7 @@ func get_state_name() -> String:
 	return state_name
 
 func enter() -> void:
+	player.velocity = Vector2.ZERO
 	player.animation_tree["parameters/conditions/is_idle"] = true
 	player.animation_tree["parameters/conditions/is_moving"] = false
 	player.animation_tree["parameters/conditions/is_attacking"] = false

@@ -3,8 +3,7 @@ class_name StateMachine extends Node
 var current_state : State
 var states : Dictionary = {}
 
-@export var player : Player
-@onready var label = $"../Label"
+@export var player : CharacterBody2D
 
 var last_state : State
 
@@ -13,6 +12,17 @@ var wont_transition : bool = false
 func _ready() -> void:
 	SignalBus.connect("toggle_player_transitions", toggle_player_transition)
 	SignalBus.connect("room_transition", transition_room)
+	
+	SignalBus.connect("open_dialogue", when_interact_start)
+	SignalBus.connect("close_dialogue", when_interact_end)
+
+func when_interact_start(lol : String) -> void:
+	if current_state.get_state_name() != "Dead":
+		transition_states("Idle")
+	wont_transition = true
+
+func when_interact_end() -> void:
+	wont_transition = false
 
 func toggle_player_transition(toggle : bool) -> void:
 	if !toggle:
@@ -37,8 +47,8 @@ func start_machine(init_states : Array[State]) -> void:
 
 func _process(delta : float) -> void:
 	current_state.update(delta)
-	
-	label.text = current_state.get_state_name()
+	if player.is_dead_dead:
+		wont_transition = true
 
 func _physics_process(delta : float) -> void:
 	current_state.physics_update(delta)

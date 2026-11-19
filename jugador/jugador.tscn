@@ -505,6 +505,9 @@ size = Vector2(48, 64)
 [sub_resource type="CircleShape2D" id="CircleShape2D_a407c"]
 radius = 16.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_vu2ya"]
+radius = 48.0
+
 [node name="Jugador" type="CharacterBody2D" unique_id=80591387]
 collision_mask = 2
 motion_mode = 1
@@ -545,7 +548,7 @@ parameters/Charge/blend_position = Vector2(0, 0)
 parameters/Idle/blend_position = Vector2(0, 0)
 parameters/Move/blend_position = Vector2(0, 0)
 
-[node name="HurtboxDash" type="Area2D" parent="." unique_id=1476334554 groups=["PlayerDash"]]
+[node name="HurtboxDash" type="Area2D" parent="." unique_id=1476334554 groups=["Player", "PlayerDash"]]
 collision_layer = 4
 collision_mask = 0
 monitoring = false
@@ -558,7 +561,7 @@ metadata/_custom_type_script = "uid://bv085os3f8uc1"
 shape = SubResource("RectangleShape2D_a407c")
 disabled = true
 
-[node name="HurtBoxSword" type="Area2D" parent="." unique_id=1838112508]
+[node name="HurtBoxSword" type="Area2D" parent="." unique_id=1838112508 groups=["Player"]]
 collision_layer = 4
 collision_mask = 0
 monitoring = false
@@ -580,5 +583,12 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=2028541930]
 position = Vector2(0, -8)
 shape = SubResource("CircleShape2D_a407c")
+
+[node name="Interactor" type="Area2D" parent="." unique_id=1344997225]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactor" unique_id=441864480]
+shape = SubResource("CircleShape2D_vu2ya")
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

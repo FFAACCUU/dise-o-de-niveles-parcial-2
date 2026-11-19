@@ -9,6 +9,8 @@ var top : float
 var right : float
 var bottom : float
 
+@export var is_boss_arena : bool = false
+
 func _ready() -> void:
 	SignalBus.connect("room_transition", on_room_transition)
 	
@@ -19,6 +21,7 @@ func _ready() -> void:
 
 func _on_body_entered(_body):
 	SignalBus.emit_signal("room_transition", true, move_direction)
+	SignalBus.emit_signal("send_current_room", room.name)
 	SignalBus.emit_signal("moved_room", left, top, right, bottom, move_direction)
 
 func on_room_transition(is_transitioning : bool, dir : Vector2) -> void:

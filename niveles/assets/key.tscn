@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://qttrjxdq5q4u"]
+
+[ext_resource type="Script" uid="uid://8fshkqsu4vb5" path="res://key.gd" id="1_gvnp5"]
+[ext_resource type="Texture2D" uid="uid://cwpqf5ty2ppxo" path="res://key_floort.png" id="2_uv8bg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gvnp5"]
+radius = 24.0
+
+[node name="Key" type="Area2D" unique_id=51764954]
+script = ExtResource("1_gvnp5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=191455695]
+shape = SubResource("CircleShape2D_gvnp5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=371674940]
+position = Vector2(4, 3)
+texture = ExtResource("2_uv8bg")
+hframes = 2
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

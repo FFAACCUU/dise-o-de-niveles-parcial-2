@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://v1ywko2fo140"]
+
+[ext_resource type="Texture2D" uid="uid://byupdysf88yx3" path="res://niveles/tilesets/Interior_Props_01.png" id="1_858td"]
+[ext_resource type="Script" uid="uid://d3o8qtbl111in" path="res://niveles/assets/small_door.gd" id="2_ite5f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5jvgv"]
+atlas = ExtResource("1_858td")
+region = Rect2(768, 576, 64, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x0wpc"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2md2q"]
+
+[node name="SmallDoor" type="StaticBody2D" unique_id=265160216]
+collision_layer = 2
+collision_mask = 0
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=891307203]
+position = Vector2(0, -32)
+texture = SubResource("AtlasTexture_5jvgv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=720190885]
+shape = SubResource("RectangleShape2D_x0wpc")
+
+[node name="InteractArea" type="Area2D" parent="." unique_id=788216698]
+position = Vector2(0, -64)
+collision_layer = 32
+collision_mask = 0
+monitoring = false
+script = ExtResource("2_ite5f")
+metadata/_custom_type_script = "uid://dc5c54c8sevxo"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea" unique_id=1098423866]
+shape = SubResource("RectangleShape2D_2md2q")
